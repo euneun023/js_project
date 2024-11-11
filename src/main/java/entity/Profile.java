@@ -19,10 +19,10 @@ public class Profile {
     @Column(name = "user_id")
     private Long user_id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "name" , unique = true)
+    private String username;
 
-    @Column(name = "email")
+    @Column(name = "email" , unique = true)
     private String email;
 
     @Column(name = "password")
