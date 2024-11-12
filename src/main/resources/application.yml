@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: boardPage
+  datasource:
+    url: jdbc:mysql://localhost:3306/boardPage
+    username: root
+    password: 2188    #admin123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  jwt:
+    secret: testkey
+    expiration: 3600000
