@@ -22,16 +22,19 @@ public class JwtTokenUtil {
 
     private long expirationTime = 1000 * 60 * 60 ; //토큰 만료 시간 (1시간)
 
-    public String generateToken(String username){
+    public String generateToken(Long user_id, String username, String password){
 
         Claims claims = Jwts.claims().setSubject(username);
+        //claims.put("id", user_id);
+        //claims.put("username", username);
+        //claims.put("password", password);
         Date now = new Date();
         Date validity = new Date(now.getTime()+ expirationTime);  //만료시간
 
         SecretKey key = new SecretKeySpec(secretKey.getBytes(), SignatureAlgorithm.HS256.getJcaName());
 
         return Jwts.builder()
-            //    .setSubject(username)
+                .setSubject(username)
                 .setClaims(claims)
                 .setIssuedAt(now)
                //.setExpiration(new Date(System.currentTimeMillis() + expirationTime))
