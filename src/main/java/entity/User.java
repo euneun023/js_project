@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Table(name = "profile_info")
 @NoArgsConstructor
-public class Profile {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

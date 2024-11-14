@@ -1,13 +1,13 @@
 package controller;
 
-import entity.Profile;
+import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import service.ProfileService;
+import service.UserService;
 
 import java.util.List;
 
@@ -16,19 +16,19 @@ import java.util.List;
 public class ProfileController {
 
     @Autowired
-    private ProfileService profileService;
+    private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<Profile>> getAllProfiles() {
-        List<Profile> profiles = profileService.getAllProfile();
-        return ResponseEntity.ok(profiles);
+    public ResponseEntity<List<User>> getAllProfiles() {
+        List<User> users = userService.getAllProfile();
+        return ResponseEntity.ok(users);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Profile> getProfileById(@PathVariable Long id){
-        Profile profile = profileService.getProfileById(id);
-        if (profile != null){
-            return ResponseEntity.ok(profile);
+    public ResponseEntity<User> getProfileById(@PathVariable Long id){
+        User user = userService.getProfileById(id);
+        if (user != null){
+            return ResponseEntity.ok(user);
         }
         return ResponseEntity.notFound().build();
     }

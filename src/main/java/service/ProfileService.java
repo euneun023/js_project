@@ -1,23 +1,23 @@
 package service;
 
-import entity.Profile;
+import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import repository.ProfileRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import repository.UserRepository;
 
 import java.util.List;
 
-@Service
-public class ProfileService {
+public class ProfileService { //프로필조회
 
-    @Autowired
-    private ProfileRepository profileRepository;
 
-    public List<Profile> getAllProfile(){
-        return profileRepository.findAll();
+    private UserRepository userRepository;
+
+    public List<User> getAllProfile(){
+        return userRepository.findAll();
+    }
+    public User getProfileById(Long id){
+        return userRepository.findById(id).orElse(null);
     }
 
-    public Profile getProfileById(Long id){
-        return profileRepository.findById(id).orElse(null);
-    }
+
 }
