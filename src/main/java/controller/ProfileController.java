@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import service.ProfileService;
 import service.UserService;
 
 import java.util.List;
@@ -16,17 +17,17 @@ import java.util.List;
 public class ProfileController {
 
     @Autowired
-    private UserService userService;
+    private ProfileService profileService;
 
     @GetMapping
     public ResponseEntity<List<User>> getAllProfiles() {
-        List<User> users = userService.getAllProfile();
+        List<User> users = profileService.getAllProfile();
         return ResponseEntity.ok(users);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getProfileById(@PathVariable Long id){
-        User user = userService.getProfileById(id);
+        User user = profileService.getProfileById(id);
         if (user != null){
             return ResponseEntity.ok(user);
         }
