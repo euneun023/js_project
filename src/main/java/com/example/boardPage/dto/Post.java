@@ -1,4 +1,4 @@
-package entity;
+package com.example.boardPage.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

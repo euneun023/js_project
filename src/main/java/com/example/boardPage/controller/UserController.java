@@ -1,16 +1,11 @@
-package controller;
+package com.example.boardPage.controller;
 
-import entity.User;
+import com.example.boardPage.service.UserService;
+import com.example.boardPage.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
-import service.UserService;
-
-import java.util.List;
 
 @RestController  // 주로 json  <=> controller : 주로 http 페이지
 @RequestMapping("/api")

@@ -1,4 +1,4 @@
-package entity;
+package com.example.boardPage.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,13 +12,14 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-public class Like {
+public class Hate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long like_id;
+    private Long hate_id;
 
     private Long post_id;
     private Long user_id;
-    private Date like_time;
+    private Date hate_time;
+
 }

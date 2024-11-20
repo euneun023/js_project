@@ -1,13 +1,14 @@
-package service;
+package com.example.boardPage.service;
 
+import com.example.boardPage.dto.JwtManager;
+import com.example.boardPage.dto.User;
+import com.example.boardPage.repository.UserRepository;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import repository.UserRepository;
 import security.JwtManager;
-
-import java.util.List;
 
 @Service
 public class UserService {

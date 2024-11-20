@@ -1,4 +1,4 @@
-package config;
+package com.example.boardPage.dto;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;

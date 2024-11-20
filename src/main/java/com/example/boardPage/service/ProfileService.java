@@ -1,8 +1,8 @@
-package service;
+package com.example.boardPage.service;
 
+import com.example.boardPage.repository.UserRepository;
+import com.example.boardPage.dto.User;
 import entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import repository.UserRepository;
 
 import java.util.List;
