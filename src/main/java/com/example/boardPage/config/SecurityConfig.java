@@ -1,6 +1,6 @@
 package com.example.boardPage.config;
 
-import com.example.boardPage.dto.JwtTokenFilter;
+import com.example.boardPage.security.JwtTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

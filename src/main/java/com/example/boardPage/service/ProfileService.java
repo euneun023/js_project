@@ -2,8 +2,7 @@ package com.example.boardPage.service;
 
 import com.example.boardPage.repository.UserRepository;
 import com.example.boardPage.dto.User;
-import entity.User;
-import repository.UserRepository;
+
 
 import java.util.List;
 

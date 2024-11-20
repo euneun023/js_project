@@ -1,4 +1,4 @@
-package com.example.boardPage.dto;
+package com.example.boardPage.security;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Value;
