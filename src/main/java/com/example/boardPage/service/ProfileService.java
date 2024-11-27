@@ -1,11 +1,13 @@
 package com.example.boardPage.service;
 
 import com.example.boardPage.repository.UserRepository;
-import com.example.boardPage.dto.User;
+import com.example.boardPage.entity.User;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
+@Service
 public class ProfileService { //프로필조회
 
 

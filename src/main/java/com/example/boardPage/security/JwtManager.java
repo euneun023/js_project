@@ -17,7 +17,7 @@ public class JwtManager {
     @Value("${jwt.secret}")
     private String secretKey;
 
-    @Value("${jwt.expiration}")
+ //   @Value("${jwt.expiration}")
     private long expirationTime = 1000 * 60 * 60 ; //토큰 만료 시간 (1시간)
 
     public String generateToken(String username){

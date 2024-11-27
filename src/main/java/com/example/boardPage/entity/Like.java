@@ -1,4 +1,4 @@
-package com.example.boardPage.dto;
+package com.example.boardPage.entity;
 
 import lombok.Getter;
 import lombok.Setter;

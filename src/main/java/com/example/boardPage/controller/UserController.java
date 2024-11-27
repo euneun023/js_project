@@ -1,7 +1,7 @@
 package com.example.boardPage.controller;
 
 import com.example.boardPage.service.UserService;
-import com.example.boardPage.dto.User;
+import com.example.boardPage.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

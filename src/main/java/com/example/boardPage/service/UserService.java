@@ -1,24 +1,26 @@
 package com.example.boardPage.service;
 
 import com.example.boardPage.security.JwtManager;
-import com.example.boardPage.dto.User;
+import com.example.boardPage.entity.User;
 import com.example.boardPage.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final JwtManager jwtManager;
+    private final PasswordEncoder passwordEncoder; //생성자
 
-    @Autowired
-    private JwtManager jwtManager;
-
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-
+    public UserService(UserRepository userRepository, JwtManager jwtManager, PasswordEncoder passwordEncoder){
+        this.userRepository = userRepository;
+        this.jwtManager = jwtManager;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     //회원가입
     public String registerUser(User user){  //DTO : UserDto userDto

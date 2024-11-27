@@ -18,7 +18,6 @@ import java.io.IOException;
 public class JwtTokenFilter extends OncePerRequestFilter { // OncePerRequestFilter: 각 http 요청에 대해 한번만 실행
 
 
-    @Autowired
     private JwtManager jwtManager; //
 
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

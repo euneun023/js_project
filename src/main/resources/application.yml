@@ -9,9 +9,9 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
 
-  jwt:
-    secret: testkey
-    expiration: 3600000
+jwt:
+  secret: your-secret-key-here
+
 
 server:
-  port: 7776
+  port: 7775
