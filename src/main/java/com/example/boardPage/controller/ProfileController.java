@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-//@RestController
-@Controller
+@RestController
 @RequestMapping("/profiles")
 public class ProfileController {
 
-    @Autowired
-    private ProfileService profileService;
+    private final ProfileService profileService;
+
+    public ProfileController(ProfileService profileService){
+        this.profileService =profileService;
+    }
 
     @GetMapping
     public ResponseEntity<List<User>> getAllProfiles() {
