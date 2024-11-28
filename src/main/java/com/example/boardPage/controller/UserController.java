@@ -49,7 +49,7 @@ public class UserController {
             String token = userService.login(loginRequest);
             return ResponseEntity.ok(token);
         } catch (IllegalArgumentException e){
-            return ResponseEntity.badRequest().body("로그인 실패 " + e.getMessage());
+            return ResponseEntity.badRequest().body("로그인 실패__ " + e.getMessage());
         }
     }
 }
