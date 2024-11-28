@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: boardPage
+  datasource:
+    url: jdbc:mysql://localhost:3306/boardpage
+    username: root
+    password: admin123    #admin123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+jwt:
+  secret: your-secret-key-here
+
+
+server:
+  port: 7775
