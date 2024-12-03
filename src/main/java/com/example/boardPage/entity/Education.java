@@ -13,7 +13,7 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 @Table(name="education")
-public class Education {
+public class Education {    /* 학력 */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +23,16 @@ public class Education {
     @Column(name = "user_id")
     private Long user_id;
     @Column(name = "school_bootcamp")
-    private String school_bootcamp;
+    private String school;          //학교
     @Column(name = "degree_cert")
-    private String degree_cert;
+    private String degree;          //학년
     @Column(name = "edu_field")
-    private String edu_field;
+    private String fieldOfString;   //전공
     @Column(name = "edu_start_date")
-    private Date edu_start_date;
+    private Date from;              //입학일
     @Column(name = "edu_finish_date")
-    private Date edu_finish_date;
+    private Date to;                //종료일
+
+    private Boolean current; //현재 다니고있는지 / ☆ DB 추가해야하는지?
 
 }
