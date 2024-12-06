@@ -1,11 +1,10 @@
 package com.example.boardPage.service;
 
+import com.example.boardPage.dto.UserDto;
 import com.example.boardPage.security.JwtManager;
 import com.example.boardPage.entity.User;
 import com.example.boardPage.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,49 +22,37 @@ public class UserService {
     }
 
     //회원가입
-    public String registerUser(User user){  //DTO : UserDto userDto
+    public void register(UserDto userDTO){  //DTO : UserDto userDto
 
-        //이메일 중복 확인
-        if (userRepository.existsByEmail(user.getEmail())){
-            throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
-        }
-
-        //이름 중복 확인
-        if (userRepository.existsByUsername(user.getUsername())){
-            throw new IllegalArgumentException("이미 사용중인 사용자 입니다.");
-        }
-
-        //비밀번호 암호화
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword); //암호화된 비밀번호 설정
-
-        //활성화된 사용자(default)
-        user.setEnabled(true);
+        userRepository.findByEmail(userDTO.getEmail()).ifPresent(user ->{
+            throw new IllegalArgumentException("이미 사용중인 이메일 주소입니다.");
+        });
+        userRepository.findByUsername(userDTO.getUsername()).ifPresent(user ->{
+            throw new IllegalArgumentException("이미 사용중인 닉네임입니다.");
+        });
 
         //회원 저장
-        userRepository.save(user);
-        return "회원가입 완료";
-
-        /* DTO일 경우
         User user = new User();
-        user.setEmail(userDto.getEmail());
-        user.setUsername(userDto.getName());
-        user.setPassword(encodeePassword);
+        user.setUsername(userDTO.getUsername());
+        user.setEmail(user.getEmail());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        //user.setEnabled(userDTO.getEnabled() != null ? userDTO.getEnabled() : true); // 필요한건가?
         user.setEnabled(true);
-         */
+
+        userRepository.save(user);
+
 
     }
 
 
 
     //로그인
-    public String login(User loginRequest){
-        //이메일 일치 테스트
-        User user = userRepository.findByEmail(loginRequest.getEmail());
+    public String login(UserDto loginRequest){
 
-        if(user == null){
-            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
-        }
+        User user = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow(
+                () -> new IllegalArgumentException("사용자를 찾을 수 없습니다.")
+        );
+
         if(!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())){
             throw new IllegalThreadStateException("비밀번호가 일치하지 않습니다.");
         }

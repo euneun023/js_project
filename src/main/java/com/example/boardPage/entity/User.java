@@ -35,14 +35,17 @@ public class User {
     private String job;
 
     @Column(name = "city_and_state")
-    private String city_and_state;
+    private String location;
 
     @Column(name = "self_introduce")
-    private String self_introduce;
+    private String bio;
+
+    private String status;  //현재 상태
+
+
 
     @Column(name = "twitter_link")
     private String twitter_link;
-
     @Column(name = "facebook_link")
     private String facebook_link;
     @Column(name = "youtube_link")

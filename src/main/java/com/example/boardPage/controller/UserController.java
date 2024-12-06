@@ -1,5 +1,6 @@
 package com.example.boardPage.controller;
 
+import com.example.boardPage.dto.UserDto;
 import com.example.boardPage.service.UserService;
 import com.example.boardPage.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,37 +20,36 @@ public class UserController {
 로그인 : [POST] ~/api/auth
  */
 
+
     private final UserService userService;
 
-    public UserController(UserService userService){
+    public UserController(UserService userService){ // @RequiredArgsConstructor
         this.userService = userService;
     }
 
     //회원가입
     @PostMapping("/users")
-    public ResponseEntity<String> signup(@RequestBody User user){ //Dto : UserDto userDto
+    public ResponseEntity<String> register(@RequestBody UserDto userDto){ //Dto : UserDto userDto
         try{
-
-
-            String result = userService.registerUser(user); //userDto
-            return ResponseEntity.ok(result);
+            userService.register(userDto); //userDto
+            return ResponseEntity.ok("회원가입 성공");
         } catch (IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred during registration"); // 상태 코드 500
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred during registration"); // 상태 코드 500
     }
 
     }
 
     //로그인
     @PostMapping("/auth")
-    public  ResponseEntity<String> login(@RequestBody User loginRequest){
+    public  ResponseEntity<String> login(@RequestBody UserDto loginRequest){
         try {
             //로그인 후, jwt 토큰 반환
             String token = userService.login(loginRequest);
             return ResponseEntity.ok(token);
         } catch (IllegalArgumentException e){
-            return ResponseEntity.badRequest().body("로그인 실패__ " + e.getMessage());
+            return ResponseEntity.badRequest().body("로그인 실패 " + e.getMessage());
         }
     }
 }
