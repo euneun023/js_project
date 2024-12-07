@@ -1,5 +1,6 @@
 package com.example.boardPage.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,9 +10,9 @@ import java.util.Date;
 
 @Entity
 @Getter
+@Builder
 @Setter
 @Table(name ="career")
-@NoArgsConstructor
 public class Career { /* 경력 */
 
     @Id
@@ -19,11 +20,12 @@ public class Career { /* 경력 */
     @Column(name = "career_id")
     private Long career_id;
 
-    @Column(name = "user_id")
-    private Long user_id;
+    @ManyToOne(fetch = FetchType.LAZY)  //여러 career가 하나의 user에 속함
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "job_title")
-    private String job_title;
+    private String title;   //사용X
 
     @Column(name = "company") //회사
     private String company;
@@ -38,13 +40,22 @@ public class Career { /* 경력 */
     private Date to;
 
     @Column(name = "job_description")   //경력 설명
-    private String job_description;
+    private String description;
 
     @Column(name = "company_domain")
-    private String company_domain;
+    private String company_domain; //사용X
 
-    private Boolean current; //현재 다니고있는지 / ☆ DB 추가해야하는지?
+    @Column(name = "current")
+    private Boolean current = true; //true로 기본설정해도될지?
 
-
-
+    public CareerBuilder toBuilder() { //없앨방법있는지
+        return builder()
+                //.career_id(this.career_id)가 필요한가?
+                .company(this.company)
+                .position(this.position)
+                .from(this.from)
+                .to(this.to)
+                .current(this.current)
+                .description(this.description);
+    }
 }

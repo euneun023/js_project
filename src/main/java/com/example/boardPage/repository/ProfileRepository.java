@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProfileRepository extends JpaRepository<User, Long> {//Long = Entity 기본 키 타입
-    Optional<ProfileDTO> findByProfileDto(String username); //id로 할지 !!
+
 }

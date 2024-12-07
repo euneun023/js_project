@@ -1,9 +1,7 @@
 package com.example.boardPage.controller;
 
-import com.example.boardPage.dto.UserDto;
+import com.example.boardPage.dto.UserDTO;
 import com.example.boardPage.service.UserService;
-import com.example.boardPage.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +27,7 @@ public class UserController {
 
     //회원가입
     @PostMapping("/users")
-    public ResponseEntity<String> register(@RequestBody UserDto userDto){ //Dto : UserDto userDto
+    public ResponseEntity<String> register(@RequestBody UserDTO userDto){ //Dto : UserDto userDto
         try{
             userService.register(userDto); //userDto
             return ResponseEntity.ok("회원가입 성공");
@@ -43,7 +41,7 @@ public class UserController {
 
     //로그인
     @PostMapping("/auth")
-    public  ResponseEntity<String> login(@RequestBody UserDto loginRequest){
+    public  ResponseEntity<String> login(@RequestBody UserDTO loginRequest){
         try {
             //로그인 후, jwt 토큰 반환
             String token = userService.login(loginRequest);
