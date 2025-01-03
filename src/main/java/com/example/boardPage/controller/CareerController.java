@@ -28,7 +28,7 @@ public class CareerController {
 
     //프로필 경력 삭제 : [DELETE] ~/api/profile/experience/:experience_id
     @DeleteMapping("/{career_id}")
-    public String deleteCareer(@RequestBody Long id){
+    public String deleteCareer(@PathVariable(value = "career_id") Long id){
         try {
             Career deleteCareer = careerService.deleteCareer(id);
             return "경력 삭제 완료";

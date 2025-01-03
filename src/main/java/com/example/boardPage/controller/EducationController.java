@@ -27,7 +27,7 @@ public class EducationController {
 
     //프로필 학력 삭제 : [DELETE] ~/api/profile/education/:education_id
     @DeleteMapping("/{edu_id}")
-    public String deleteEducation(@RequestBody Long id){
+    public String deleteEducation(@PathVariable Long id){
         try{
             Education deleteEducation = educationService.deleteEducation(id);
             return "학력 삭제 완료";
